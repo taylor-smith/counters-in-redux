@@ -16,14 +16,16 @@ export function removeCounter() {
   }
 }
 
-export function incrementCounter() {
+export function incrementCounter(index) {
   return {
-    type: INCREMENT_COUNTER
+    type: INCREMENT_COUNTER,
+    index
   }
 }
 
-export function decrementCounter() {
+export function decrementCounter(index) {
   return {
-    type: DECREMENT_COUNTER
+    type: DECREMENT_COUNTER,
+    index
   }
 }

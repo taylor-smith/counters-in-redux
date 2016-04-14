@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import CounterGrid from '../components/CounterGrid';
 import {
+  addCounter,
+  removeCounter,
   incrementCounter,
   decrementCounter
 } from '../actions';
@@ -11,8 +13,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onIncrement: () => dispatch(incrementCounter()),
-    onDecrement: () => dispatch(decrementCounter())
+    addCounter: () => dispatch(addCounter()),
+    removeCounter: () => dispatch(removeCounter()),
+    onIncrement: (index) => dispatch(incrementCounter(index)),
+    onDecrement: (index) => dispatch(decrementCounter(index))
   }
 }
 

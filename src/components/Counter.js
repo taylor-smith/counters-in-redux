@@ -8,7 +8,7 @@ class Counter extends Component {
   render() {
     const { count, onDecrement, onIncrement } = this.props;
     return (
-      <div>
+      <div style={{display:'inline-block'}}>
         <h1 className="counter">{count}</h1>
         <button className="onDecrement" onClick={onDecrement}>-</button>
         <button className="onIncrement" onClick={onIncrement}>+</button>

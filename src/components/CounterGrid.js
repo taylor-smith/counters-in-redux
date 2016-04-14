@@ -1,15 +1,17 @@
 import React, { PropTypes, Component } from 'react';
 import Counter from './Counter';
 
-function CounterGrid({ counters, onIncrement, onDecrement }) {
+function CounterGrid({ counters, addCounter, removeCounter, onIncrement, onDecrement }) {
   return (
     <div>
+      <button type="button" onClick={addCounter}>Add Counter</button>
+      <button type="button" onClick={removeCounter}>Remove Counter</button>
         {counters.map((count, index) => 
           <Counter 
             key={index}
             count={count}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
+            onIncrement={() => onIncrement(index)}
+            onDecrement={() => onDecrement(index)}
           />
         )}
     </div>  

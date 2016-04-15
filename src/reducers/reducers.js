@@ -7,7 +7,7 @@ import {
   DECREMENT_COUNTER
 } from '../actions';
 
-function counters(state={counters: [0]}, action) {
+function counters(state={counters: []}, action) {
   switch (action.type) {
     case ADD_COUNTER:
       return Object.assign({}, state, {
@@ -18,21 +18,24 @@ function counters(state={counters: [0]}, action) {
     case REMOVE_COUNTER:
       return Object.assign({}, state, {
         counters: [
-          state.counters.slice(0, state.counters.length-1)
+          ...state.counters.slice(0, -1)
         ]
       })
     case INCREMENT_COUNTER:
       return Object.assign({}, state, {
+        ...state,
         counters: [
-          ...state,
-          state.counters[action.index] + 1
+          ...state.counters.slice(0, action.index),
+          state.counters[action.index] + 1,
+          ...state.counters.slice(action.index + 1)
         ]
       })
     case DECREMENT_COUNTER:
       return Object.assign({}, state, {
         counters: [
-          ...state,
-          state.counters[action.index] - 1
+          ...state.counters.slice(0, action.index),
+          state.counters[action.index] - 1,
+          ...state.counters.slice(action.index + 1)
         ]
       })
     default:
